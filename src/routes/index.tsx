@@ -29,11 +29,11 @@ type Column = {
   items: (Item | { name: string; prices: string[] })[];
 };
 
-const MENU: { id: string; label: string; image: string; sections: Column[] }[] = [
+const MENU: { id: string; label: string; sections: Column[] }[] = [
   {
     id: "pizza",
     label: "Pizza & Napolitane",
-    image: menu1.url,
+    
     sections: [
       {
         title: "Pizza",
@@ -89,7 +89,7 @@ const MENU: { id: string; label: string; image: string; sections: Column[] }[] =
   {
     id: "sandwich",
     label: "Sandwich & Tacos",
-    image: menu2.url,
+    
     sections: [
       {
         title: "Sandwich",
@@ -138,7 +138,7 @@ const MENU: { id: string; label: string; image: string; sections: Column[] }[] =
   {
     id: "plats",
     label: "Plats & Extras",
-    image: menu3.url,
+    
     sections: [
       {
         title: "Les Plats",
