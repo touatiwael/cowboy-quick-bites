@@ -1,12 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Star, MapPin, Clock, Phone, Flame, ChevronRight } from "lucide-react";
+import { Star, MapPin, Clock, Phone, ChevronRight } from "lucide-react";
 
 import heroBg from "@/assets/hero-bg.jpg";
 import makloubImg from "@/assets/makloub.jpg";
-import tacosImg from "@/assets/tacos.jpg";
-import burgerImg from "@/assets/burger.jpg";
 import logoAsset from "@/assets/cowboy-logo.png.asset.json";
 const logo = logoAsset.url;
 
@@ -190,49 +188,7 @@ const MENU: { id: string; label: string; sections: Column[] }[] = [
     ],
   },
 ];
-
-type Dish = {
-  id: string;
-  name: string;
-  tagline: string;
-  price: string;
-  desc: string;
-  image: string;
-  heat: number;
-};
-
-const HERO_DISHES: Dish[] = [
-  {
-    id: "makloub",
-    name: "The Outlaw Makloub",
-    tagline: "Wanted: dead or alive.",
-    price: "from 7.500 DT",
-    desc: "Grilled meat, molten cheese, fresh veg, pressed between crispy flatbread until it surrenders. The most wanted sandwich in Sousse.",
-    image: makloubImg,
-    heat: 3,
-  },
-  {
-    id: "tacos",
-    name: "The Sheriff's Tacos",
-    tagline: "Law & flavor.",
-    price: "from 9.500 DT",
-    desc: "Grilled tortilla loaded with tender meat, golden fries and our smoky cheese sauce. Wrapped, pressed, served with attitude.",
-    image: tacosImg,
-    heat: 2,
-  },
-  {
-    id: "cowboy",
-    name: "The Cowboy Galette",
-    tagline: "The whole herd. 25 DT.",
-    price: "25.000 DT",
-    desc: "Our signature galette loaded cowboy-style: escalope, chawarma, cheese, fries and the works. Big enough to feed a posse.",
-    image: burgerImg,
-    heat: 2,
-  },
-];
-
 function Index() {
-  const [active, setActive] = useState<Dish>(HERO_DISHES[0]);
   const [menuTab, setMenuTab] = useState(MENU[0].id);
   const currentMenu = MENU.find((m) => m.id === menuTab)!;
 
