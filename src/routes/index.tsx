@@ -7,10 +7,8 @@ import heroBg from "@/assets/hero-bg.jpg";
 import makloubImg from "@/assets/makloub.jpg";
 import tacosImg from "@/assets/tacos.jpg";
 import burgerImg from "@/assets/burger.jpg";
-import logo from "@/assets/logo.png";
-import menu1 from "@/assets/menu-1.png.asset.json";
-import menu2 from "@/assets/menu-2.png.asset.json";
-import menu3 from "@/assets/menu-3.png.asset.json";
+import logoAsset from "@/assets/cowboy-logo.png.asset.json";
+const logo = logoAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -249,7 +247,6 @@ function Index() {
           </a>
           <nav className="hidden gap-8 text-sm uppercase tracking-[0.2em] text-parchment/80 md:flex">
             <a href="#menu" className="hover:text-accent transition-colors">Menu</a>
-            <a href="#carte" className="hover:text-accent transition-colors">Carte</a>
             <a href="#visit" className="hover:text-accent transition-colors">Visit</a>
           </nav>
           <a
@@ -349,149 +346,9 @@ function Index() {
         </div>
       </section>
 
-      {/* HERO DISH SWITCHER */}
-      <section id="menu" className="relative bg-background py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 text-center">
-            <div className="mb-3 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.4em] text-ember">
-              <span className="h-px w-8 bg-ember" />
-              Wanted · Dead or Alive
-              <span className="h-px w-8 bg-ember" />
-            </div>
-            <h2 className="font-display text-5xl text-parchment md:text-6xl">
-              PICK YOUR POISON
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl font-serif italic text-muted-foreground">
-              Three legendary bites. One cowboy grill. Tap a name and watch it draw.
-            </p>
-          </div>
-
-          <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
-            {HERO_DISHES.map((d) => {
-              const isActive = d.id === active.id;
-              return (
-                <button
-                  key={d.id}
-                  onClick={() => setActive(d)}
-                  className={`relative rounded-none border-2 px-6 py-3 font-display text-sm uppercase tracking-[0.2em] transition-all ${
-                    isActive
-                      ? "border-ember bg-ember text-primary-foreground shadow-[4px_4px_0_0_oklch(0_0_0)]"
-                      : "border-border bg-transparent text-parchment/70 hover:border-accent hover:text-accent"
-                  }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeIndicator"
-                      className="absolute -top-2 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-ember"
-                    />
-                  )}
-                  {d.name.split(" ").slice(-1)[0]}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="relative min-h-[520px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.id}
-                initial={{ opacity: 0, y: 30, rotateX: -8 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                exit={{ opacity: 0, y: -30, rotateX: 8 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="grid gap-10 md:grid-cols-2 md:items-center"
-                style={{ perspective: 1200 }}
-              >
-                <motion.div
-                  initial={{ scale: 0.9, rotate: -3 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative"
-                >
-                  <div className="absolute inset-4 -z-10 border-2 border-accent" />
-                  <div className="absolute inset-0 -z-20 translate-x-4 translate-y-4 bg-ember" />
-                  <img
-                    src={active.image}
-                    alt={active.name}
-                    width={1200}
-                    height={1200}
-                    className="aspect-square w-full object-cover shadow-2xl"
-                  />
-                  <div className="absolute right-4 top-4 rotate-6 border-2 border-parchment bg-background/90 px-4 py-2 font-display text-xl text-parchment shadow-lg">
-                    {active.price}
-                  </div>
-                </motion.div>
-
-                <div>
-                  <motion.p
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.15 }}
-                    className="mb-3 font-serif text-lg italic text-accent"
-                  >
-                    "{active.tagline}"
-                  </motion.p>
-                  <motion.h3
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="font-display text-5xl leading-none text-parchment md:text-6xl"
-                  >
-                    {active.name.toUpperCase()}
-                  </motion.h3>
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.25 }}
-                    className="mt-5 flex items-center gap-2"
-                  >
-                    {[...Array(3)].map((_, i) => (
-                      <Flame
-                        key={i}
-                        className={`h-5 w-5 ${i < active.heat ? "fill-ember text-ember" : "text-muted"}`}
-                      />
-                    ))}
-                    <span className="ml-2 text-xs uppercase tracking-widest text-muted-foreground">
-                      Heat level
-                    </span>
-                  </motion.div>
-                  <motion.p
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="mt-6 font-body text-lg leading-relaxed text-parchment/80"
-                  >
-                    {active.desc}
-                  </motion.p>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="mt-8 flex flex-wrap gap-4"
-                  >
-                    <a
-                      href={`tel:${PHONE_TEL}`}
-                      className="inline-flex items-center gap-2 border-2 border-ember bg-ember px-6 py-3 font-display text-sm uppercase tracking-widest text-primary-foreground shadow-[4px_4px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[1px_1px_0_0_oklch(0_0_0)]"
-                    >
-                      <Phone className="h-4 w-4" />
-                      Order this
-                    </a>
-                    <a
-                      href="#carte"
-                      className="inline-flex items-center gap-2 border-2 border-parchment/40 bg-transparent px-6 py-3 font-display text-sm uppercase tracking-widest text-parchment/80 hover:border-accent hover:text-accent"
-                    >
-                      Full carte
-                    </a>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-      </section>
 
       {/* FULL CARTE */}
-      <section id="carte" className="relative border-y border-border bg-card py-24">
+      <section id="menu" className="relative border-y border-border bg-card py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-10 text-center">
             <div className="mb-3 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.4em] text-accent">
@@ -534,21 +391,9 @@ function Index() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.35 }}
-              className="grid gap-10 lg:grid-cols-[1.1fr_1fr]"
             >
-              {/* Original menu board */}
-              <div className="relative">
-                <div className="absolute -inset-2 border-2 border-accent" />
-                <img
-                  src={currentMenu.image}
-                  alt={`${currentMenu.label} board`}
-                  loading="lazy"
-                  className="relative w-full object-cover shadow-2xl"
-                />
-              </div>
-
               {/* Text menu */}
-              <div className="grid gap-8 sm:grid-cols-2">
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {currentMenu.sections.map((section, si) => (
                   <motion.div
                     key={section.title}
