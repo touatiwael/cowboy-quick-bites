@@ -8,6 +8,9 @@ import makloubImg from "@/assets/makloub.jpg";
 import tacosImg from "@/assets/tacos.jpg";
 import burgerImg from "@/assets/burger.jpg";
 import logo from "@/assets/logo.png";
+import menu1 from "@/assets/menu-1.png.asset.json";
+import menu2 from "@/assets/menu-2.png.asset.json";
+import menu3 from "@/assets/menu-3.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,6 +20,178 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+
+const PHONE_DISPLAY = "48 050 048";
+const PHONE_TEL = "+21648050048";
+
+type Item = { name: string; price: string };
+type Column = {
+  title: string;
+  columns?: string[]; // e.g. ["Large", "Mini"]
+  items: (Item | { name: string; prices: string[] })[];
+};
+
+const MENU: { id: string; label: string; image: string; sections: Column[] }[] = [
+  {
+    id: "pizza",
+    label: "Pizza & Napolitane",
+    image: menu1.url,
+    sections: [
+      {
+        title: "Pizza",
+        columns: ["Large", "Mini"],
+        items: [
+          { name: "Margherita", prices: ["11.000", "8.000"] },
+          { name: "Thon", prices: ["13.000", "8.500"] },
+          { name: "Chawarma", prices: ["15.000", "9.000"] },
+          { name: "Escalope", prices: ["16.000", "9.500"] },
+          { name: "4 Saisons", prices: ["15.500", "10.000"] },
+          { name: "Champignons", prices: ["12.000", "—"] },
+          { name: "Thon Champignons", prices: ["16.500", "—"] },
+          { name: "4 Fromages", prices: ["21.000", "—"] },
+          { name: "Turc", prices: ["21.000", "—"] },
+        ],
+      },
+      {
+        title: "Napolitane",
+        items: [
+          { name: "Margherita", price: "15.000" },
+          { name: "Thon", price: "16.500" },
+          { name: "Escalope", price: "18.000" },
+          { name: "4 Saisons", price: "17.500" },
+          { name: "Champignons", price: "15.500" },
+          { name: "4 Fromages", price: "20.000" },
+          { name: "Fruit de Mer", price: "25.000" },
+        ],
+      },
+      {
+        title: "Triangle",
+        items: [
+          { name: "Thon", price: "10.000" },
+          { name: "Chawarma", price: "11.000" },
+          { name: "Escalope Grillé", price: "12.000" },
+          { name: "Escalope Panné", price: "13.500" },
+          { name: "Cordon Bleu", price: "13.500" },
+          { name: "Cowboy", price: "15.000" },
+        ],
+      },
+      {
+        title: "Panozzo",
+        items: [
+          { name: "Thon", price: "9.000" },
+          { name: "Chawarma", price: "9.500" },
+          { name: "Escalope Grillé", price: "9.500" },
+          { name: "Escalope Panné", price: "11.500" },
+          { name: "Cordon Bleu", price: "11.000" },
+          { name: "Kabeb", price: "12.500" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "sandwich",
+    label: "Sandwich & Tacos",
+    image: menu2.url,
+    sections: [
+      {
+        title: "Sandwich",
+        items: [
+          { name: "Thon", price: "7.500" },
+          { name: "Escalope Grillé", price: "8.000" },
+          { name: "Escalope Panné", price: "9.000" },
+          { name: "Chawarma", price: "7.500" },
+          { name: "Cordon Bleu", price: "9.000" },
+        ],
+      },
+      {
+        title: "Tacos",
+        items: [
+          { name: "Thon", price: "9.500" },
+          { name: "Chawarma", price: "10.000" },
+          { name: "Escalope Grillé", price: "10.000" },
+          { name: "Escalope Panné", price: "11.000" },
+          { name: "Cordon Bleu", price: "11.000" },
+          { name: "Cowboy", price: "17.000" },
+        ],
+      },
+      {
+        title: "Makloub / Baguette Farcie / Libanais / Cornet",
+        items: [
+          { name: "Thon", price: "7.500" },
+          { name: "Chawarma", price: "8.000" },
+          { name: "Escalope Grillé", price: "8.500" },
+          { name: "Escalope Panné", price: "9.500" },
+          { name: "Cordon Bleu", price: "9.500" },
+        ],
+      },
+      {
+        title: "Galette",
+        items: [
+          { name: "Thon", price: "13.000" },
+          { name: "Chawarma", price: "14.000" },
+          { name: "Escalope Grillé", price: "15.000" },
+          { name: "Escalope Panné", price: "16.500" },
+          { name: "Cordon Bleu", price: "16.500" },
+          { name: "Cowboy", price: "25.000" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "plats",
+    label: "Plats & Extras",
+    image: menu3.url,
+    sections: [
+      {
+        title: "Les Plats",
+        items: [
+          { name: "Escalope Grillé", price: "24.000" },
+          { name: "Chawarma", price: "22.000" },
+          { name: "Escalope / Chawarma", price: "30.000" },
+        ],
+      },
+      {
+        title: "Omelettes",
+        items: [
+          { name: "Fromage", price: "5.500" },
+          { name: "Thon Fromage", price: "6.500" },
+          { name: "Jambon Fromage", price: "6.000" },
+          { name: "Spécial", price: "8.500" },
+        ],
+      },
+      {
+        title: "Chapati",
+        items: [
+          { name: "Jambon", price: "3.500" },
+          { name: "Thon", price: "4.000" },
+          { name: "Spécial", price: "5.500" },
+        ],
+      },
+      {
+        title: "Les Suppléments",
+        items: [
+          { name: "Mozarella", price: "3.000" },
+          { name: "Gruyère", price: "2.500" },
+          { name: "Cheddar", price: "2.500" },
+          { name: "Fromage Slice", price: "1.000" },
+          { name: "Œuf", price: "0.900" },
+          { name: "Frite", price: "2.500" },
+          { name: "Champignons", price: "2.000" },
+        ],
+      },
+      {
+        title: "Portion Viandes",
+        items: [
+          { name: "Thon", price: "4.000" },
+          { name: "Chawarma", price: "5.000" },
+          { name: "Escalope Grillé", price: "6.000" },
+          { name: "Escalope Panné", price: "6.500" },
+          { name: "Cordon Bleu", price: "4.000" },
+        ],
+      },
+    ],
+  },
+];
 
 type Dish = {
   id: string;
@@ -28,12 +203,12 @@ type Dish = {
   heat: number;
 };
 
-const DISHES: Dish[] = [
+const HERO_DISHES: Dish[] = [
   {
     id: "makloub",
     name: "The Outlaw Makloub",
     tagline: "Wanted: dead or alive.",
-    price: "8 DT",
+    price: "from 7.500 DT",
     desc: "Grilled meat, molten cheese, fresh veg, pressed between crispy flatbread until it surrenders. The most wanted sandwich in Sousse.",
     image: makloubImg,
     heat: 3,
@@ -42,24 +217,26 @@ const DISHES: Dish[] = [
     id: "tacos",
     name: "The Sheriff's Tacos",
     tagline: "Law & flavor.",
-    price: "9 DT",
+    price: "from 9.500 DT",
     desc: "Grilled tortilla loaded with tender meat, golden fries and our smoky cheese sauce. Wrapped, pressed, served with attitude.",
     image: tacosImg,
     heat: 2,
   },
   {
-    id: "burger",
-    name: "The Bandit Burger",
-    tagline: "Rob your appetite.",
-    price: "10 DT",
-    desc: "Smashed beef patty, thick bacon, caramelized onions and melted cheddar on a toasted brioche. Straight from the saloon grill.",
+    id: "cowboy",
+    name: "The Cowboy Galette",
+    tagline: "The whole herd. 25 DT.",
+    price: "25.000 DT",
+    desc: "Our signature galette loaded cowboy-style: escalope, chawarma, cheese, fries and the works. Big enough to feed a posse.",
     image: burgerImg,
     heat: 2,
   },
 ];
 
 function Index() {
-  const [active, setActive] = useState<Dish>(DISHES[0]);
+  const [active, setActive] = useState<Dish>(HERO_DISHES[0]);
+  const [menuTab, setMenuTab] = useState(MENU[0].id);
+  const currentMenu = MENU.find((m) => m.id === menuTab)!;
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -72,14 +249,15 @@ function Index() {
           </a>
           <nav className="hidden gap-8 text-sm uppercase tracking-[0.2em] text-parchment/80 md:flex">
             <a href="#menu" className="hover:text-accent transition-colors">Menu</a>
-            <a href="#story" className="hover:text-accent transition-colors">Saloon</a>
+            <a href="#carte" className="hover:text-accent transition-colors">Carte</a>
             <a href="#visit" className="hover:text-accent transition-colors">Visit</a>
           </nav>
           <a
-            href="#order"
+            href={`tel:${PHONE_TEL}`}
             className="rounded-none border-2 border-accent bg-accent px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-accent-foreground shadow-[4px_4px_0_0_oklch(0_0_0)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]"
           >
-            Order Now
+            <Phone className="mr-1.5 inline h-3.5 w-3.5" />
+            {PHONE_DISPLAY}
           </a>
         </div>
       </header>
@@ -94,10 +272,6 @@ function Index() {
             backgroundPosition: "center",
           }}
         />
-        {/* torn edge bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-6 bg-background"
-             style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 40%, 96% 90%, 92% 30%, 88% 80%, 84% 20%, 80% 90%, 76% 40%, 72% 80%, 68% 20%, 64% 90%, 60% 30%, 56% 80%, 52% 40%, 48% 90%, 44% 20%, 40% 80%, 36% 30%, 32% 90%, 28% 40%, 24% 80%, 20% 20%, 16% 90%, 12% 30%, 8% 80%, 4% 40%, 0 90%)" }} />
-
         <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 pt-32 pb-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -127,8 +301,8 @@ function Index() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-8 max-w-xl font-serif text-lg italic text-parchment/80 md:text-xl"
           >
-            Makloub. Tacos. Burgers. Slow-grilled, hard-hitting, straight from
-            the wildest saloon in Sousse.
+            Pizza. Tacos. Makloub. Galettes. Slow-grilled, hard-hitting,
+            straight from the wildest saloon in Sousse.
           </motion.p>
 
           <motion.div
@@ -138,22 +312,21 @@ function Index() {
             className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
           >
             <a
-              href="#menu"
+              href={`tel:${PHONE_TEL}`}
               className="group relative inline-flex items-center gap-2 rounded-none border-2 border-ember bg-ember px-8 py-4 font-display text-lg tracking-widest text-primary-foreground shadow-[6px_6px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]"
             >
-              <Flame className="h-5 w-5" />
-              SEE THE MENU
-              <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <Phone className="h-5 w-5" />
+              CALL {PHONE_DISPLAY}
             </a>
             <a
-              href="#visit"
+              href="#carte"
               className="inline-flex items-center gap-2 font-body text-sm uppercase tracking-widest text-parchment/80 underline decoration-accent decoration-2 underline-offset-8 hover:text-accent"
             >
-              Find the saloon
+              See the full carte
+              <ChevronRight className="h-4 w-4" />
             </a>
           </motion.div>
 
-          {/* rating strip */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -169,14 +342,14 @@ function Index() {
               4.2 · Google
             </div>
             <div className="h-4 w-px bg-parchment/20" />
-            <div>1–10 DT / person</div>
+            <div>1–25 DT / person</div>
             <div className="h-4 w-px bg-parchment/20" />
             <div>Fast · Fresh · Fired up</div>
           </motion.div>
         </div>
       </section>
 
-      {/* MENU SWITCHER */}
+      {/* HERO DISH SWITCHER */}
       <section id="menu" className="relative bg-background py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-12 text-center">
@@ -193,9 +366,8 @@ function Index() {
             </p>
           </div>
 
-          {/* Selector */}
           <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
-            {DISHES.map((d) => {
+            {HERO_DISHES.map((d) => {
               const isActive = d.id === active.id;
               return (
                 <button
@@ -219,7 +391,6 @@ function Index() {
             })}
           </div>
 
-          {/* Animated card */}
           <div className="relative min-h-[520px]">
             <AnimatePresence mode="wait">
               <motion.div
@@ -231,7 +402,6 @@ function Index() {
                 className="grid gap-10 md:grid-cols-2 md:items-center"
                 style={{ perspective: 1200 }}
               >
-                {/* Image */}
                 <motion.div
                   initial={{ scale: 0.9, rotate: -3 }}
                   animate={{ scale: 1, rotate: 0 }}
@@ -247,12 +417,11 @@ function Index() {
                     height={1200}
                     className="aspect-square w-full object-cover shadow-2xl"
                   />
-                  <div className="absolute right-4 top-4 rotate-6 border-2 border-parchment bg-background/90 px-4 py-2 font-display text-2xl text-parchment shadow-lg">
+                  <div className="absolute right-4 top-4 rotate-6 border-2 border-parchment bg-background/90 px-4 py-2 font-display text-xl text-parchment shadow-lg">
                     {active.price}
                   </div>
                 </motion.div>
 
-                {/* Text */}
                 <div>
                   <motion.p
                     initial={{ opacity: 0, x: 20 }}
@@ -301,17 +470,17 @@ function Index() {
                     className="mt-8 flex flex-wrap gap-4"
                   >
                     <a
-                      href="#order"
+                      href={`tel:${PHONE_TEL}`}
                       className="inline-flex items-center gap-2 border-2 border-ember bg-ember px-6 py-3 font-display text-sm uppercase tracking-widest text-primary-foreground shadow-[4px_4px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[1px_1px_0_0_oklch(0_0_0)]"
                     >
+                      <Phone className="h-4 w-4" />
                       Order this
-                      <ChevronRight className="h-4 w-4" />
                     </a>
                     <a
-                      href="#visit"
+                      href="#carte"
                       className="inline-flex items-center gap-2 border-2 border-parchment/40 bg-transparent px-6 py-3 font-display text-sm uppercase tracking-widest text-parchment/80 hover:border-accent hover:text-accent"
                     >
-                      Visit us
+                      Full carte
                     </a>
                   </motion.div>
                 </div>
@@ -321,61 +490,120 @@ function Index() {
         </div>
       </section>
 
-      {/* STORY */}
-      <section id="story" className="relative border-y border-border bg-card py-24">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-[1fr_1.2fr] md:items-center">
-          <div>
-            <div className="mb-4 text-xs uppercase tracking-[0.4em] text-accent">Our Saloon</div>
-            <h2 className="font-display text-5xl leading-tight text-parchment md:text-6xl">
-              A LITTLE
-              <br />
-              <span className="text-ember">WILD.</span>
-              <br />
-              A LOT TASTY.
+      {/* FULL CARTE */}
+      <section id="carte" className="relative border-y border-border bg-card py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-10 text-center">
+            <div className="mb-3 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.4em] text-accent">
+              <span className="h-px w-8 bg-accent" />
+              La Carte
+              <span className="h-px w-8 bg-accent" />
+            </div>
+            <h2 className="font-display text-5xl text-parchment md:text-6xl">
+              THE FULL <span className="text-ember">MENU</span>
             </h2>
-            <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-parchment/80">
-              The Cowboy was born on a dusty street in Sousse with one rule:
-              serve food so good, they'll ride miles for it. Grilled hot,
-              wrapped tight, priced fair. That's the cowboy code.
+            <p className="mx-auto mt-4 max-w-xl font-serif italic text-muted-foreground">
+              Prix en Dinar Tunisien. Everything grilled fresh to order.
             </p>
-            <div className="mt-8 grid grid-cols-3 gap-4">
-              {[
-                { k: "4.2", v: "Google rating" },
-                { k: "1-10", v: "DT per plate" },
-                { k: "100%", v: "Grilled fresh" },
-              ].map((s) => (
-                <div key={s.v} className="border-l-2 border-ember pl-3">
-                  <div className="font-display text-3xl text-parchment">{s.k}</div>
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{s.v}</div>
-                </div>
-              ))}
-            </div>
           </div>
-          <div className="relative">
-            <div className="absolute -inset-2 border-2 border-accent" />
-            <img
-              src={heroBg}
-              alt="Inside the Cowboy saloon"
-              width={1920}
-              height={1200}
-              loading="lazy"
-              className="relative aspect-[4/3] w-full object-cover grayscale-[0.2]"
-            />
-            <div className="absolute bottom-4 left-4 right-4 border border-parchment/40 bg-background/80 p-4 backdrop-blur">
-              <div className="font-serif italic text-parchment/90">
-                "Best makloub I've had in Sousse. The place has soul."
+
+          {/* Tabs */}
+          <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
+            {MENU.map((m) => {
+              const isActive = m.id === menuTab;
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => setMenuTab(m.id)}
+                  className={`rounded-none border-2 px-5 py-3 font-display text-xs uppercase tracking-[0.2em] transition-all ${
+                    isActive
+                      ? "border-accent bg-accent text-accent-foreground shadow-[4px_4px_0_0_oklch(0_0_0)]"
+                      : "border-border bg-transparent text-parchment/70 hover:border-accent hover:text-accent"
+                  }`}
+                >
+                  {m.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentMenu.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.35 }}
+              className="grid gap-10 lg:grid-cols-[1.1fr_1fr]"
+            >
+              {/* Original menu board */}
+              <div className="relative">
+                <div className="absolute -inset-2 border-2 border-accent" />
+                <img
+                  src={currentMenu.image}
+                  alt={`${currentMenu.label} board`}
+                  loading="lazy"
+                  className="relative w-full object-cover shadow-2xl"
+                />
               </div>
-              <div className="mt-1 text-[10px] uppercase tracking-widest text-accent">
-                ★★★★★ — Verified guest
+
+              {/* Text menu */}
+              <div className="grid gap-8 sm:grid-cols-2">
+                {currentMenu.sections.map((section, si) => (
+                  <motion.div
+                    key={section.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + si * 0.06 }}
+                    className="border-t-2 border-ember pt-4"
+                  >
+                    <h3 className="mb-4 font-display text-xl uppercase tracking-widest text-parchment">
+                      {section.title}
+                    </h3>
+                    {section.columns && (
+                      <div className="mb-2 flex justify-end gap-6 text-[10px] uppercase tracking-widest text-accent">
+                        {section.columns.map((c) => (
+                          <span key={c} className="w-14 text-right">{c}</span>
+                        ))}
+                      </div>
+                    )}
+                    <ul className="space-y-2">
+                      {section.items.map((it) => (
+                        <li key={it.name} className="flex items-baseline justify-between gap-3 border-b border-dashed border-border/60 pb-1.5">
+                          <span className="font-body text-sm text-parchment/90">{it.name}</span>
+                          {"prices" in it ? (
+                            <span className="flex gap-6 font-display text-sm text-accent">
+                              {it.prices.map((p, i) => (
+                                <span key={i} className="w-14 text-right tabular-nums">{p}</span>
+                              ))}
+                            </span>
+                          ) : (
+                            <span className="font-display text-sm text-accent tabular-nums">{it.price}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
               </div>
-            </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="mt-12 text-center">
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="inline-flex items-center gap-3 border-2 border-ember bg-ember px-8 py-4 font-display text-base uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]"
+            >
+              <Phone className="h-5 w-5" />
+              Order — {PHONE_DISPLAY}
+            </a>
           </div>
         </div>
       </section>
 
       {/* VISIT / CTA */}
       <section id="visit" className="relative bg-background py-24">
-        <div id="order" className="mx-auto max-w-5xl px-6 text-center">
+        <div className="mx-auto max-w-5xl px-6 text-center">
           <div className="mb-4 text-xs uppercase tracking-[0.4em] text-ember">Round 'em up</div>
           <h2 className="font-display text-5xl text-parchment md:text-7xl">
             SADDLE UP.
@@ -390,43 +618,93 @@ function Index() {
             {[
               { icon: MapPin, label: "Find us", value: "RJ6G+QC5, Sousse" },
               { icon: Clock, label: "Grill hours", value: "Daily · 11am – late" },
-              { icon: Phone, label: "Reserve a spot", value: "Call the saloon" },
-            ].map((c) => (
-              <div
-                key={c.label}
-                className="group border-2 border-border bg-card p-6 text-left transition-all hover:border-ember hover:shadow-[6px_6px_0_0_oklch(0.62_0.19_40)]"
-              >
-                <c.icon className="h-6 w-6 text-ember" />
-                <div className="mt-4 text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {c.label}
-                </div>
-                <div className="mt-1 font-display text-xl text-parchment">{c.value}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-14">
-            <a
-              href="https://maps.google.com/?q=RJ6G%2BQC5+Sousse"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 border-2 border-accent bg-accent px-10 py-5 font-display text-xl uppercase tracking-widest text-accent-foreground shadow-[6px_6px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]"
-            >
-              <MapPin className="h-5 w-5" />
-              Get directions
-            </a>
+              { icon: Phone, label: "Call the saloon", value: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
+            ].map((c) => {
+              const Comp = c.href ? "a" : "div";
+              return (
+                <Comp
+                  key={c.label}
+                  {...(c.href ? { href: c.href } : {})}
+                  className="group block border-2 border-border bg-card p-6 text-left transition-all hover:border-ember hover:shadow-[6px_6px_0_0_oklch(0.62_0.19_40)]"
+                >
+                  <c.icon className="h-6 w-6 text-ember" />
+                  <div className="mt-4 text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {c.label}
+                  </div>
+                  <div className="mt-1 font-display text-xl text-parchment">{c.value}</div>
+                </Comp>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-border bg-card py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-xs uppercase tracking-widest text-muted-foreground md:flex-row">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="" className="h-8 w-8" width={32} height={32} />
-            <span className="font-display text-parchment">The Cowboy · Sousse</span>
+      {/* FOOTER with MAP */}
+      <footer className="border-t-2 border-ember bg-card">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1fr_1.3fr]">
+          <div>
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="" className="h-14 w-14" width={56} height={56} />
+              <div>
+                <div className="font-display text-2xl tracking-widest text-parchment">THE COWBOY</div>
+                <div className="text-[10px] uppercase tracking-widest text-accent">Sousse · Tunisia</div>
+              </div>
+            </div>
+            <p className="mt-6 max-w-sm font-serif italic text-parchment/70">
+              The wildest fast-food joint in town. Grilled hot, wrapped tight,
+              priced fair — that's the cowboy code.
+            </p>
+
+            <ul className="mt-8 space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-ember" />
+                <a
+                  href="https://maps.google.com/?q=RJ6G%2BQC5+Sousse"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-parchment hover:text-accent"
+                >
+                  RJ6G+QC5, Sousse, Tunisia
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-5 w-5 shrink-0 text-ember" />
+                <a href={`tel:${PHONE_TEL}`} className="font-display text-lg tracking-widest text-parchment hover:text-accent">
+                  {PHONE_DISPLAY}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Clock className="h-5 w-5 shrink-0 text-ember" />
+                <span className="text-parchment">Daily · 11:00 – late</span>
+              </li>
+            </ul>
           </div>
-          <div>© {new Date().getFullYear()} — Ride safe, eat hard.</div>
+
+          <div className="relative">
+            <div className="absolute -inset-2 border-2 border-accent" />
+            <iframe
+              title="The Cowboy — Sousse location"
+              src="https://maps.google.com/maps?q=RJ6G%2BQC5%20Sousse&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              className="relative h-[360px] w-full border-0 grayscale-[0.15]"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <a
+              href="https://maps.google.com/?q=RJ6G%2BQC5+Sousse"
+              target="_blank"
+              rel="noreferrer"
+              className="absolute bottom-4 left-4 inline-flex items-center gap-2 border-2 border-accent bg-accent px-4 py-2 font-display text-xs uppercase tracking-widest text-accent-foreground shadow-[4px_4px_0_0_oklch(0_0_0)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]"
+            >
+              <MapPin className="h-4 w-4" />
+              Open in Maps
+            </a>
+          </div>
+        </div>
+        <div className="border-t border-border py-5">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 text-[10px] uppercase tracking-widest text-muted-foreground md:flex-row">
+            <div>© {new Date().getFullYear()} The Cowboy · Sousse</div>
+            <div>Ride safe, eat hard.</div>
+          </div>
         </div>
       </footer>
     </div>
