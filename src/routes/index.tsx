@@ -416,7 +416,7 @@ function Index() {
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
               { icon: MapPin, label: "Find us", value: "RJ6G+QC5, Sousse" },
-              { icon: Clock, label: "Grill hours", value: "Daily · 11am – late" },
+              { icon: Clock, label: "Grill hours", value: "Daily · 11am – 02:00" },
               { icon: Phone, label: "Call the saloon", value: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
             ].map((c) => {
               const Comp = c.href ? "a" : "div";
@@ -474,7 +474,7 @@ function Index() {
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="h-5 w-5 shrink-0 text-ember" />
-                <span className="text-parchment">Daily · 11:00 – late</span>
+                <span className="text-parchment">Daily · 11:00 – 02:00</span>
               </li>
             </ul>
           </div>
