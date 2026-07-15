@@ -5,8 +5,7 @@ import { Star, MapPin, Clock, Phone, ChevronRight } from "lucide-react";
 
 import heroBg from "@/assets/hero-bg.jpg";
 import makloubImg from "@/assets/makloub.jpg";
-import logoAsset from "@/assets/cowboy-logo.png.asset.json";
-const logo = logoAsset.url;
+const logo = "/cowboy-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,7 +30,7 @@ const MENU: { id: string; label: string; sections: Column[] }[] = [
   {
     id: "pizza",
     label: "Pizza & Napolitane",
-    
+
     sections: [
       {
         title: "Pizza",
@@ -41,10 +40,10 @@ const MENU: { id: string; label: string; sections: Column[] }[] = [
           { name: "Thon", prices: ["13.000", "8.500"] },
           { name: "Chawarma", prices: ["15.000", "9.000"] },
           { name: "Escalope", prices: ["16.000", "9.500"] },
-          { name: "4 Saisons", prices: ["15.500", "10.000"] },
+          { name: "4 Saisons", prices: ["16.000", "10.000"] },
           { name: "Champignons", prices: ["12.000", "—"] },
-          { name: "Thon Champignons", prices: ["16.500", "—"] },
-          { name: "4 Fromages", prices: ["21.000", "—"] },
+          { name: "Thon Champignons", prices: ["15.000", "—"] },
+          { name: "4 Fromages", prices: ["16.500", "—"] },
           { name: "Turc", prices: ["21.000", "—"] },
         ],
       },
@@ -74,12 +73,12 @@ const MENU: { id: string; label: string; sections: Column[] }[] = [
       {
         title: "Panozzo",
         items: [
-          { name: "Thon", price: "9.000" },
-          { name: "Chawarma", price: "9.500" },
-          { name: "Escalope Grillé", price: "9.500" },
-          { name: "Escalope Panné", price: "11.500" },
-          { name: "Cordon Bleu", price: "11.000" },
-          { name: "Kabeb", price: "12.500" },
+          { name: "Thon", price: "10.000" },
+          { name: "Chawarma", price: "10.500" },
+          { name: "Escalope Grillé", price: "10.500" },
+          { name: "Escalope Panné", price: "12.500" },
+          { name: "Cordon Bleu", price: "12.000" },
+          { name: "Kabeb", price: "13.500" },
         ],
       },
     ],
@@ -87,7 +86,7 @@ const MENU: { id: string; label: string; sections: Column[] }[] = [
   {
     id: "sandwich",
     label: "Sandwich & Tacos",
-    
+
     sections: [
       {
         title: "Sandwich",
@@ -136,7 +135,7 @@ const MENU: { id: string; label: string; sections: Column[] }[] = [
   {
     id: "plats",
     label: "Plats & Extras",
-    
+
     sections: [
       {
         title: "Les Plats",
@@ -166,12 +165,12 @@ const MENU: { id: string; label: string; sections: Column[] }[] = [
       {
         title: "Les Suppléments",
         items: [
-          { name: "Mozarella", price: "3.000" },
-          { name: "Gruyère", price: "2.500" },
-          { name: "Cheddar", price: "2.500" },
+          { name: "Mozarella", price: "4.000" },
+          { name: "Gruyère", price: "5.000" },
+          { name: "Cheddar", price: "4.000" },
           { name: "Fromage Slice", price: "1.000" },
           { name: "Œuf", price: "0.900" },
-          { name: "Frite", price: "2.500" },
+          { name: "Frite", price: "3.000" },
           { name: "Champignons", price: "2.000" },
         ],
       },
@@ -328,11 +327,10 @@ function Index() {
                 <button
                   key={m.id}
                   onClick={() => setMenuTab(m.id)}
-                  className={`rounded-none border-2 px-5 py-3 font-display text-xs uppercase tracking-[0.2em] transition-all ${
-                    isActive
-                      ? "border-accent bg-accent text-accent-foreground shadow-[4px_4px_0_0_oklch(0_0_0)]"
-                      : "border-border bg-transparent text-parchment/70 hover:border-accent hover:text-accent"
-                  }`}
+                  className={`rounded-none border-2 px-5 py-3 font-display text-xs uppercase tracking-[0.2em] transition-all ${isActive
+                    ? "border-accent bg-accent text-accent-foreground shadow-[4px_4px_0_0_oklch(0_0_0)]"
+                    : "border-border bg-transparent text-parchment/70 hover:border-accent hover:text-accent"
+                    }`}
                 >
                   {m.label}
                 </button>
