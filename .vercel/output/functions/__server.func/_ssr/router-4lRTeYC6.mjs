@@ -1,9 +1,9 @@
 import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as Outlet, f as lazyRouteComponent, g as useRouter, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-DVfgl_vd.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-4lRTeYC6.js
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-BUbx9dNk.css";
+var styles_default = "/assets/styles-FcIzLuim.css";
 function NotFoundComponent() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "flex min-h-screen items-center justify-center bg-background px-4",
@@ -143,7 +143,7 @@ function RootComponent() {
 	});
 }
 var makloub_default = "/assets/makloub-CLJr77AI.jpg";
-var $$splitComponentImporter = () => import("./routes-DAVJzK3v.mjs");
+var $$splitComponentImporter = () => import("./routes-CIHEdDge.mjs");
 var rootRouteChildren = { IndexRoute: createFileRoute("/")({
 	head: () => ({ meta: [{
 		property: "og:image",

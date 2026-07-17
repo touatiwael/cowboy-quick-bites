@@ -2,11 +2,16 @@ import { o as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { n as AnimatePresence } from "../_libs/framer-motion.mjs";
 import { t as motion } from "../_libs/motion.mjs";
-import { a as ChevronRight, i as Clock, n as Phone, r as MapPin, t as Star } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DAVJzK3v.js
+import { a as Clock, i as MapPin, n as Star, o as ChevronRight, r as Phone, t as Truck } from "../_libs/lucide-react.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CIHEdDge.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var hero_bg_default = "/assets/hero-bg-CtzezHb3.jpg";
+var MENU_IMAGES = {
+	pizza: "/assets/pizza-menu-DtgK95WR.png",
+	sandwich: "/assets/sandwich-tacos-menu-B62AFhDh.png",
+	plats: "/assets/plats-extras-menu-D-5SX-Kb.png"
+};
 var logo = "/cowboy-logo.png";
 var PHONE_DISPLAY = "48 050 048";
 var PHONE_TEL = "+21648050048";
@@ -455,7 +460,7 @@ function Index() {
 							className: "mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-accent",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-px w-10 bg-accent" }),
-								"Est. Sousse · Tunisia",
+								"Est. Sousse · Tunisia · Livraison à Domicile",
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-px w-10 bg-accent" })
 							]
 						}),
@@ -510,15 +515,25 @@ function Index() {
 								href: `tel:${PHONE_TEL}`,
 								className: "group relative inline-flex items-center gap-2 rounded-none border-2 border-ember bg-ember px-8 py-4 font-display text-lg tracking-widest text-primary-foreground shadow-[6px_6px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "h-5 w-5" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "h-5 w-5 animate-pulse" }),
 									"CALL ",
 									PHONE_DISPLAY
 								]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-								href: "#carte",
+								href: "#menu",
 								className: "inline-flex items-center gap-2 font-body text-sm uppercase tracking-widest text-parchment/80 underline decoration-accent decoration-2 underline-offset-8 hover:text-accent",
-								children: ["See the full carte", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { className: "h-4 w-4" })]
+								children: ["See the full menu", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { className: "h-4 w-4" })]
 							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(motion.div, {
+							initial: { opacity: 0 },
+							animate: { opacity: 1 },
+							transition: {
+								duration: .8,
+								delay: .7
+							},
+							className: "mt-4 flex items-center gap-2 text-xs uppercase tracking-widest text-accent border border-accent/20 px-4 py-2 bg-background/60 backdrop-blur-sm shadow-[4px_4px_0_0_oklch(0_0_0)]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "h-4 w-4 text-accent animate-bounce" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Livraison à Domicile disponible sur Sousse" })]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(motion.div, {
 							initial: { opacity: 0 },
@@ -535,6 +550,11 @@ function Index() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-4 w-px bg-parchment/20" }),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: "1–25 DT / person" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-4 w-px bg-parchment/20" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-1.5 text-accent",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "h-4 w-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Livraison à Domicile" })]
+								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-4 w-px bg-parchment/20" }),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: "Fast · Fresh · Fired up" })
 							]
@@ -584,7 +604,7 @@ function Index() {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AnimatePresence, {
 							mode: "wait",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(motion.div, {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(motion.div, {
 								initial: {
 									opacity: 0,
 									y: 20
@@ -598,8 +618,36 @@ function Index() {
 									y: -20
 								},
 								transition: { duration: .35 },
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "grid gap-8 sm:grid-cols-2 lg:grid-cols-3",
+								className: "grid gap-8 lg:grid-cols-[1.1fr_2fr]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "relative group overflow-hidden border-2 border-ember bg-card h-[280px] lg:h-auto min-h-[280px] shadow-[6px_6px_0_0_oklch(0_0_0)]",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+											src: MENU_IMAGES[currentMenu.id],
+											alt: currentMenu.label,
+											className: "absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "absolute bottom-6 left-6 right-6",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "text-[10px] uppercase tracking-[0.25em] text-accent mb-1 block font-body",
+													children: "Featured Cowboy Fare"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+													className: "font-display text-2xl text-parchment tracking-widest uppercase",
+													children: currentMenu.label
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "font-serif italic text-xs text-parchment/60 mt-1",
+													children: "Freshly fired up on the saloon grill."
+												})
+											]
+										})
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "grid gap-8 sm:grid-cols-2",
 									children: currentMenu.sections.map((section, si) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(motion.div, {
 										initial: {
 											opacity: 0,
@@ -644,20 +692,23 @@ function Index() {
 											})
 										]
 									}, section.title))
-								})
+								})]
 							}, currentMenu.id)
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mt-12 text-center",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 								href: `tel:${PHONE_TEL}`,
 								className: "inline-flex items-center gap-3 border-2 border-ember bg-ember px-8 py-4 font-display text-base uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "h-5 w-5" }),
-									"Order — ",
+									"Order & Delivery — ",
 									PHONE_DISPLAY
 								]
-							})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "mt-4 text-xs uppercase tracking-[0.2em] text-accent flex items-center justify-center gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "h-4 w-4 text-accent animate-pulse" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Livraison à domicile rapide sur Sousse" })]
+							})]
 						})
 					]
 				})
@@ -688,7 +739,7 @@ function Index() {
 							children: "Walk in, take out, or send a rider. We'll have the grill fired up."
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "mt-12 grid gap-6 md:grid-cols-3",
+							className: "mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4",
 							children: [
 								{
 									icon: MapPin,
@@ -705,19 +756,25 @@ function Index() {
 									label: "Call the saloon",
 									value: PHONE_DISPLAY,
 									href: `tel:${PHONE_TEL}`
+								},
+								{
+									icon: Truck,
+									label: "Livraison à domicile",
+									value: "Disponible à Sousse",
+									href: `tel:${PHONE_TEL}`
 								}
 							].map((c) => {
 								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(c.href ? "a" : "div", {
 									...c.href ? { href: c.href } : {},
 									className: "group block border-2 border-border bg-card p-6 text-left transition-all hover:border-ember hover:shadow-[6px_6px_0_0_oklch(0.62_0.19_40)]",
 									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(c.icon, { className: "h-6 w-6 text-ember" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(c.icon, { className: "h-6 w-6 text-ember group-hover:animate-bounce" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 											className: "mt-4 text-[10px] uppercase tracking-widest text-muted-foreground",
 											children: c.label
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "mt-1 font-display text-xl text-parchment",
+											className: "mt-1 font-display text-lg text-parchment",
 											children: c.value
 										})
 									]
@@ -771,6 +828,13 @@ function Index() {
 										href: `tel:${PHONE_TEL}`,
 										className: "font-display text-lg tracking-widest text-parchment hover:text-accent",
 										children: PHONE_DISPLAY
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+									className: "flex items-center gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "h-5 w-5 shrink-0 text-ember" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-parchment",
+										children: "Livraison à domicile disponible"
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {

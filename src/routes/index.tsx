@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Star, MapPin, Clock, Phone, ChevronRight, Truck } from "lucide-react";
+import { Star, MapPin, Clock, Phone, ChevronRight, Truck, Bike } from "lucide-react";
 
 import heroBg from "@/assets/hero-bg.jpg";
 import makloubImg from "@/assets/makloub.jpg";
