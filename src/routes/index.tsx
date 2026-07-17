@@ -241,7 +241,7 @@ function Index() {
             className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-accent"
           >
             <span className="h-px w-10 bg-accent" />
-            Est. Sousse · Tunisia
+            Est. Sousse · Tunisia · Livraison à Domicile
             <span className="h-px w-10 bg-accent" />
           </motion.div>
 
