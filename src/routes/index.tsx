@@ -1,10 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Star, MapPin, Clock, Phone, ChevronRight } from "lucide-react";
+import { Star, MapPin, Clock, Phone, ChevronRight, Truck } from "lucide-react";
 
 import heroBg from "@/assets/hero-bg.jpg";
 import makloubImg from "@/assets/makloub.jpg";
+import pizzaMenuImg from "@/assets/pizza-menu.png";
+import sandwichTacosMenuImg from "@/assets/sandwich-tacos-menu.png";
+import platsExtrasMenuImg from "@/assets/plats-extras-menu.png";
+
+const MENU_IMAGES: Record<string, string> = {
+  pizza: pizzaMenuImg,
+  sandwich: sandwichTacosMenuImg,
+  plats: platsExtrasMenuImg,
+};
 const logo = "/cowboy-logo.png";
 
 export const Route = createFileRoute("/")({
@@ -267,16 +276,26 @@ function Index() {
               href={`tel:${PHONE_TEL}`}
               className="group relative inline-flex items-center gap-2 rounded-none border-2 border-ember bg-ember px-8 py-4 font-display text-lg tracking-widest text-primary-foreground shadow-[6px_6px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]"
             >
-              <Phone className="h-5 w-5" />
+              <Phone className="h-5 w-5 animate-pulse" />
               CALL {PHONE_DISPLAY}
             </a>
             <a
-              href="#carte"
+              href="#menu"
               className="inline-flex items-center gap-2 font-body text-sm uppercase tracking-widest text-parchment/80 underline decoration-accent decoration-2 underline-offset-8 hover:text-accent"
             >
-              See the full carte
+              See the full menu
               <ChevronRight className="h-4 w-4" />
             </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mt-4 flex items-center gap-2 text-xs uppercase tracking-widest text-accent border border-accent/20 px-4 py-2 bg-background/60 backdrop-blur-sm shadow-[4px_4px_0_0_oklch(0_0_0)]"
+          >
+            <Truck className="h-4 w-4 text-accent animate-bounce" />
+            <span>Livraison à Domicile disponible sur Sousse</span>
           </motion.div>
 
           <motion.div
@@ -295,6 +314,11 @@ function Index() {
             </div>
             <div className="h-4 w-px bg-parchment/20" />
             <div>1–25 DT / person</div>
+            <div className="h-4 w-px bg-parchment/20" />
+            <div className="flex items-center gap-1.5 text-accent">
+              <Truck className="h-4 w-4" />
+              <span>Livraison à Domicile</span>
+            </div>
             <div className="h-4 w-px bg-parchment/20" />
             <div>Fast · Fresh · Fired up</div>
           </motion.div>
@@ -345,9 +369,25 @@ function Index() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.35 }}
+              className="grid gap-8 lg:grid-cols-[1.1fr_2fr]"
             >
+              {/* Featured Category Image Card */}
+              <div className="relative group overflow-hidden border-2 border-ember bg-card h-[280px] lg:h-auto min-h-[280px] shadow-[6px_6px_0_0_oklch(0_0_0)]">
+                <img
+                  src={MENU_IMAGES[currentMenu.id]}
+                  alt={currentMenu.label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-accent mb-1 block font-body">Featured Cowboy Fare</span>
+                  <h3 className="font-display text-2xl text-parchment tracking-widest uppercase">{currentMenu.label}</h3>
+                  <p className="font-serif italic text-xs text-parchment/60 mt-1">Freshly fired up on the saloon grill.</p>
+                </div>
+              </div>
+
               {/* Text menu */}
-              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-8 sm:grid-cols-2">
                 {currentMenu.sections.map((section, si) => (
                   <motion.div
                     key={section.title}
@@ -373,7 +413,7 @@ function Index() {
                           {"prices" in it ? (
                             <span className="flex gap-6 font-display text-sm text-accent">
                               {it.prices.map((p, i) => (
-                                <span key={i} className="w-14 text-right tabular-nums">{p}</span>
+                                  <span key={i} className="w-14 text-right tabular-nums">{p}</span>
                               ))}
                             </span>
                           ) : (
@@ -394,8 +434,12 @@ function Index() {
               className="inline-flex items-center gap-3 border-2 border-ember bg-ember px-8 py-4 font-display text-base uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0_0_oklch(0_0_0)] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_oklch(0_0_0)]"
             >
               <Phone className="h-5 w-5" />
-              Order — {PHONE_DISPLAY}
+              Order & Delivery — {PHONE_DISPLAY}
             </a>
+            <p className="mt-4 text-xs uppercase tracking-[0.2em] text-accent flex items-center justify-center gap-2">
+              <Truck className="h-4 w-4 text-accent animate-pulse" />
+              <span>Livraison à domicile rapide sur Sousse</span>
+            </p>
           </div>
         </div>
       </section>
@@ -413,11 +457,12 @@ function Index() {
             Walk in, take out, or send a rider. We'll have the grill fired up.
           </p>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: MapPin, label: "Find us", value: "RJ6G+QC5, Sousse" },
               { icon: Clock, label: "Grill hours", value: "Daily · 11am – 02:00" },
               { icon: Phone, label: "Call the saloon", value: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
+              { icon: Truck, label: "Livraison à domicile", value: "Disponible à Sousse", href: `tel:${PHONE_TEL}` },
             ].map((c) => {
               const Comp = c.href ? "a" : "div";
               return (
@@ -426,11 +471,11 @@ function Index() {
                   {...(c.href ? { href: c.href } : {})}
                   className="group block border-2 border-border bg-card p-6 text-left transition-all hover:border-ember hover:shadow-[6px_6px_0_0_oklch(0.62_0.19_40)]"
                 >
-                  <c.icon className="h-6 w-6 text-ember" />
+                  <c.icon className="h-6 w-6 text-ember group-hover:animate-bounce" />
                   <div className="mt-4 text-[10px] uppercase tracking-widest text-muted-foreground">
                     {c.label}
                   </div>
-                  <div className="mt-1 font-display text-xl text-parchment">{c.value}</div>
+                  <div className="mt-1 font-display text-lg text-parchment">{c.value}</div>
                 </Comp>
               );
             })}
@@ -471,6 +516,10 @@ function Index() {
                 <a href={`tel:${PHONE_TEL}`} className="font-display text-lg tracking-widest text-parchment hover:text-accent">
                   {PHONE_DISPLAY}
                 </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Truck className="h-5 w-5 shrink-0 text-ember" />
+                <span className="text-parchment">Livraison à domicile disponible</span>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="h-5 w-5 shrink-0 text-ember" />
